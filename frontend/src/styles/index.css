@@ -1,0 +1,308 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-slate-50: var(--background);
+  --color-slate-100: var(--border);
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --border: #f1f5f9;
+}
+
+.dark {
+  --background: #0b111e;
+  --foreground: #f8fafc;
+  --card: #141c2f;
+  --border: #1e293b;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Plus Jakarta Sans', 'Outfit', sans-serif;
+  background-color: var(--background);
+  color: var(--foreground);
+  height: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Overrides */
+.dark body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+
+
+/* Calendar details override */
+.dark .bg-teal-50,
+.dark .bg-yellow-100,
+.dark .bg-amber-50,
+.dark .bg-orange-50,
+.dark .bg-red-50,
+.dark .bg-emerald-50,
+.dark .bg-blue-50,
+.dark .bg-indigo-50,
+.dark .bg-violet-50,
+.dark .bg-purple-50,
+.dark .bg-rose-50 {
+  background-color: #1c263c !important;
+  border-color: #334155 !important;
+}
+
+/* Ensure calendar/event type pill text is bright enough */
+.dark .text-red-700,
+.dark .text-amber-700,
+.dark .text-orange-700,
+.dark .text-emerald-700,
+.dark .text-blue-700,
+.dark .text-indigo-700,
+.dark .text-indigo-750,
+.dark .text-violet-700,
+.dark .text-purple-700,
+.dark .text-rose-700,
+.dark .text-teal-800,
+.dark .text-emerald-800,
+.dark .text-blue-800,
+.dark .text-purple-800,
+.dark .text-rose-800,
+.dark .text-amber-800 {
+  color: #a5b4fc !important;
+  /* soft violet/indigo tint for visibility */
+}
+
+/* All dark slate text classes should become light/white */
+.dark .text-slate-950,
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-slate-700,
+.dark .text-slate-600,
+.dark .text-indigo-950,
+.dark .text-indigo-900,
+.dark .text-indigo-800,
+.dark .text-indigo-700,
+.dark .text-gray-900,
+.dark .text-gray-800,
+.dark .text-gray-700,
+.dark .text-gray-600,
+.dark .text-zinc-900,
+.dark .text-zinc-800,
+.dark .text-zinc-700,
+.dark .text-zinc-600,
+.dark .text-black {
+  color: #f1f5f9 !important;
+}
+
+/* Intermediate text colors should be light slate/gray */
+.dark .text-slate-500,
+.dark .text-indigo-600,
+.dark .text-indigo-500,
+.dark .text-gray-500,
+.dark .text-zinc-500 {
+  color: #94a3b8 !important;
+}
+
+.dark .text-slate-400,
+.dark .text-gray-400,
+.dark .text-zinc-400 {
+  color: #788fa6 !important;
+}
+
+/* Keep active colors correct */
+.dark .bg-indigo-600,
+.dark [class*="bg-[#5b4cf5]"] {
+  background-color: #5b4cf5 !important;
+  color: #ffffff !important;
+}
+
+.dark .text-indigo-600 {
+  color: #818cf8 !important;
+}
+
+/* Borders and lines */
+.dark .border-border,
+.dark .border-slate-100,
+.dark .border-slate-200,
+.dark [class*="border-indigo-100/30"],
+.dark [class*="border-[#e8e8f0]"],
+.dark [class*="border-slate-200/30"],
+.dark [class*="border-slate-200/50"] {
+  border-color: var(--border) !important;
+}
+
+/* Custom styles for tables, forms and cards in dark mode */
+.dark table th {
+  background-color: #151e30 !important;
+  color: #f1f5f9 !important;
+  border-color: var(--border) !important;
+}
+
+.dark table td {
+  border-color: var(--border) !important;
+}
+
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #151e30 !important;
+  color: #f1f5f9 !important;
+  border-color: #27354f !important;
+}
+
+.dark input::placeholder,
+.dark select::placeholder,
+.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+/* Hide browser-native password reveal buttons so custom toggles stay in control */
+input[type='password']::-ms-reveal,
+input[type='password']::-ms-clear {
+  display: none;
+}
+
+input[type='password']::-webkit-credentials-auto-fill-button,
+input[type='password']::-webkit-contacts-auto-fill-button {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.dark select option {
+  background-color: #141c2f !important;
+  color: #f1f5f9 !important;
+}
+
+.dark .border-dashed {
+  border-color: #27354f !important;
+}
+
+.dark header {
+  background-color: var(--card) !important;
+  border-color: var(--border) !important;
+}
+
+.dark header .bg-slate-50 {
+  background-color: #1a2336 !important;
+  border-color: var(--border) !important;
+}
+
+.dark header span {
+  color: #f1f5f9 !important;
+}
+
+.dark header .text-slate-800 {
+  color: #f8fafc !important;
+}
+
+/* Calendar & Recharts Tooltip styling adjustments */
+.dark .recharts-default-tooltip {
+  background-color: var(--card) !important;
+  border-color: var(--border) !important;
+  color: #f1f5f9 !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Global premium borders and shadow classes */
+.border-border {
+  border-color: #f1f5f9 !important;
+}
+
+
+/* Toast Animations */
+.toast-enter {
+  animation: toastSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Sticky Table Column styling and Hover consistency */
+.sticky-emp-col {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 10 !important;
+  box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08) !important;
+  transition: background-color 0.2s ease !important;
+}
+
+.dark .sticky-emp-col {
+  box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sticky-emp-col {
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.08) !important;
+  }
+}
+
+
+/* Header sticky column */
+.sticky-emp-header {
+  position: sticky !important;
+  left: 0 !important;
+  z-index: 40 !important;
+  box-shadow: 1px 0 0 0 rgba(0, 0, 0, 0.08) !important;
+}
+
+.dark .sticky-emp-header {
+  box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  .sticky-emp-header {
+    box-shadow: 1px 0 0 0 rgba(255, 255, 255, 0.08) !important;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 8s ease infinite;
+  background-size: 200% 200%;
+}

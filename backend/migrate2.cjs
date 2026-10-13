@@ -1,0 +1,1 @@
+const mongoose = require('mongoose'); mongoose.connect('mongodb://localhost:27017/workforge').then(async () => { const Company = mongoose.model('Company', new mongoose.Schema({}, { strict: false })); const res = await Company.updateMany({ industry: 'General', phone: '' }, { $set: { isTeam: true } }); console.log(res); process.exit(); });
