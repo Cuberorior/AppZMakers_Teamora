@@ -34,6 +34,10 @@ export function ResetPassword() {
 
       try {
         const response = await fetch(`${BACKEND_URL}/auth/verify-token?token=${token}`);
+        const contentType = response.headers.get('content-type') || '';
+        if (!contentType.includes('application/json')) {
+          throw new Error('Unable to connect to the backend server. Please verify that the backend API is running.');
+        }
         const data = await response.json();
         if (!response.ok) {
           throw new Error(data.error || 'Token is invalid or has expired.');
@@ -73,6 +77,10 @@ export function ResetPassword() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token, password }),
       });
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        throw new Error('Unable to connect to the backend server. Please verify that the backend API is running.');
+      }
       const data = await response.json();
       if (!response.ok) {
         throw new Error(data.error || 'Failed to reset password');
